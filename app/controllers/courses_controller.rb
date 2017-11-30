@@ -86,7 +86,11 @@ class CoursesController < ApplicationController
 
 
   #-------------------------for both teachers and students----------------------
-
+  # 增加outline方法
+  def outline
+    @course = Course.find_by_id(params[:id])
+  end
+  
   def index
     @course=current_user.teaching_courses.paginate(page: params[:page], per_page: 4) if teacher_logged_in?
     @course=current_user.courses.paginate(page: params[:page], per_page: 4) if student_logged_in?
@@ -115,10 +119,10 @@ class CoursesController < ApplicationController
       redirect_to root_url, flash: {danger: '请登陆'}
     end
   end
-
+  # 加入课程大纲参数信息
   def course_params
     params.require(:course).permit(:course_code, :name, :course_type, :teaching_type, :exam_type,
-                                   :credit, :limit_num, :class_room, :course_time, :course_week)
+                                   :credit, :limit_num, :class_room, :course_time, :course_week, :outline)
   end
 
 

@@ -88,11 +88,11 @@ teacher_map={
 }
 
 course_map={
-    1 => {course_code: "091M4001H", name: "计算机体系结构", course_type: "专业核心课", credit: "60/3.0", limit_num: "2", course_week: "第2-20周", course_time: "周一(9-11)", class_room: "教1-107", teaching_type: "课堂讲授为主", exam_type: "闭卷笔试"},
-    2 => {course_code: "091M4002H", name: "计算机网络", course_type: "专业核心课", credit: "60/3.0", limit_num: "", course_week: "第2-20周	", course_time: "周五(2-4)", class_room: "教1-107", teaching_type: "课堂讲授为主", exam_type: "闭卷笔试"},
-    3 => {course_code: "091M4021H-1", name: "高级软件工程", course_type: "一级学科核心课", credit: "60/3.0", limit_num: "", course_week: "第2-20周	", course_time: "周四(9-11)", class_room: "教1-109", teaching_type: "授课、讨论	", exam_type: "闭卷笔试"},
-    4 => {course_code: "091M4021H-2", name: "高级软件工程", course_type: "一级学科核心课", credit: "60/3.0", limit_num: "", course_week: "第2-20周	", course_time: "周三(9-11)", class_room: "教1-109", teaching_type: "授课、讨论	", exam_type: "闭卷笔试"},
-    5 => {course_code: "091M4023H", name: "数理逻辑与程序理论", course_type: "专业核心课", credit: "60/3.0", limit_num: "", course_week: "第2-20周	", course_time: "周二(5-7)", class_room: "教1-113", teaching_type: "课堂讲授为主", exam_type: "闭卷笔试"},
+    1 => {course_code: "091M4001H", name: "计算机体系结构", course_type: "专业核心课", credit: "60/3.0", limit_num: "2", course_week: "第2-20周", course_time: "周一(9-11)", class_room: "教1-107", teaching_type: "课堂讲授为主", exam_type: "闭卷笔试", outline:"本课程为计算机科学与技术学科研究生的专业核心课。本课程重点论述计算机系统的各种基本结构、设计技术和性能分析方法。课程的目的及任务是：使学生通过本课程的学习，了解计算机系统的各种基本结构。"},
+    2 => {course_code: "091M4002H", name: "计算机网络", course_type: "专业核心课", credit: "60/3.0", limit_num: "", course_week: "第2-20周	", course_time: "周五(2-4)", class_room: "教1-107", teaching_type: "课堂讲授为主", exam_type: "闭卷笔试", outline:"本课程为计算机学科研究生的专业核心课。本课程讲授和讨论计算机网络前沿研究领域的主要思想和关键技术。主要内容有TCP/IP协议栈、路由算法、网络测量和分析、内容分发网络、SDN/NFV、未来互联网体系结构等。"},
+    3 => {course_code: "091M4021H-1", name: "高级软件工程", course_type: "一级学科核心课", credit: "60/3.0", limit_num: "", course_week: "第2-20周	", course_time: "周四(9-11)", class_room: "教1-109", teaching_type: "授课、讨论	", exam_type: "闭卷笔试", outline:"本课程为计算机科学与技术学科研究生的学科基础课。本课程主要讲解当今软件工程面临的新问题以及为解决这些问题的新技术发展，包括需求工程、软件设计、软件过程、软件质量等。"},
+    4 => {course_code: "091M4021H-2", name: "高级软件工程", course_type: "一级学科核心课", credit: "60/3.0", limit_num: "", course_week: "第2-20周	", course_time: "周三(9-11)", class_room: "教1-109", teaching_type: "授课、讨论	", exam_type: "闭卷笔试", outline:"本课程为计算机科学与技术学科研究生的学科基础课。本课程主要讲解当今软件工程面临的新问题以及为解决这些问题的新技术发展，包括需求工程、软件设计、软件过程、软件质量等。"},
+    5 => {course_code: "091M4023H", name: "数理逻辑与程序理论", course_type: "专业核心课", credit: "60/3.0", limit_num: "", course_week: "第2-20周	", course_time: "周二(5-7)", class_room: "教1-113", teaching_type: "课堂讲授为主", exam_type: "闭卷笔试", outline:"通过本课程的学习，要求学生能掌握数理逻辑与程序理论的基本概念、理论和方法，对命题逻辑、一阶逻辑和计算逻辑的整体内容有所了解，为进一步学习和研究计算机科学与技术打下一个理论基础。"},
     6 => {course_code: "091M4041H", name: "计算机算法设计与分析", course_type: "专业核心课", credit: "60/3.0", limit_num: 250, course_week: "第2-20周	", course_time: "周五(2-4)", class_room: "教1-101", teaching_type: "课堂讲授为主", exam_type: "闭卷笔试"},
     7 => {course_code: "091M4042H", name: "模式识别与机器学习", course_type: "专业核心课", credit: "60/3.0", limit_num: 450, course_week: "第2-20周	", course_time: "周一(5-7)", class_room: "教1-102", teaching_type: "课堂讲授为主", exam_type: "闭卷笔试"},
     8 => {course_code: "091M4043H", name: "高级人工智能", course_type: "专业核心课", credit: "60/3.0", limit_num: "", course_week: "第2-20周", course_time: "周二(9-11)", class_room: "教1-107", teaching_type: "课堂讲授为主", exam_type: "闭卷笔试"},
@@ -145,6 +145,7 @@ teacher_map.keys.each do |index|
       class_room: course_map[index][:class_room],
       teaching_type: course_map[index][:teaching_type],
       exam_type: course_map[index][:exam_type],
+      outline: course_map[index][:outline]
   )
 
 end

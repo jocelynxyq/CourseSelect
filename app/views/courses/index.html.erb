@@ -31,7 +31,7 @@
                 <tr>
 
                   <td><%= course.course_code %></td>
-                  <td><%= course.name %></td>
+                  <td><%= link_to course.name, outline_course_url(course) %></td><!--加入课程大纲超链接-->
                   <td><%= course.credit %></td>
                   <td><%= course.exam_type %></td>
                   <td><%= course.teacher&.name %></td>

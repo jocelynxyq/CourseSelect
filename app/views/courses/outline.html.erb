@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2">
+      <%= render "shared/sidenav" %>
+
+    </div>
+    <div class="col-sm-10">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+  	        <span>
+  	          <i class="glyphicon glyphicon-th-list"></i>
+  	        </span>
+			      课程大纲
+			    </h3>
+        </div>
+        <div class="panel-body" style="min-height: 450px">
+          <h4><p><strong><%= @course.name %></strong></p></h4>
+          <p>
+         		<span><strong>课程编码：</strong><%= @course.course_code %></span>
+         		<span style="margin-left: 20px"><strong>课时/学分：</strong><%= @course.credit %></span>
+         		<span style="margin-left: 20px"><strong>课程属性：</strong><%= @course.course_type %></span>
+         	</p>
+         	<p>
+       			<div>
+       			  <strong>教学大纲</strong>
+       			</div>
+       			<%= @course.outline %>
+       		</p>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
