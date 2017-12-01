@@ -21,6 +21,8 @@
             <tr>
               <th>课程编号</th>
               <th>课程名称</th>
+              <th>已选人数</th> <!--加入选课人数栏-->
+              <th>限选人数</th> <!--加入限选人数栏-->
               <th>课时/学分</th>
               <th>考试方式</th>
               <th>主讲教师</th>
@@ -32,6 +34,8 @@
 
                   <td><%= course.course_code %></td>
                   <td><%= link_to course.name, outline_course_url(course) %></td><!--加入课程大纲超链接-->
+                  <td><%= course.users.length %></td>               <!--显示已选人数-->
+                  <td><%= course.limit_num %></td>                <!--显示课程限制选课人数-->
                   <td><%= course.credit %></td>
                   <td><%= course.exam_type %></td>
                   <td><%= course.teacher&.name %></td>
