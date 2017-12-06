@@ -72,8 +72,12 @@ class CoursesController < ApplicationController
 
   def select
     @course=Course.find_by_id(params[:id])
-    current_user.courses<<@course
-    flash={:suceess => "成功选择课程: #{@course.name}"}
+    if @course.users.length < @course.limit_num
+      current_user.courses<<@course
+      flash={:suceess => "成功选择课程: #{@course.name}"}
+    else 
+      flash={:danger => "选课失败，#{@course.name} 选课人数已满！"}
+    end
     redirect_to courses_path, flash: flash
   end
 

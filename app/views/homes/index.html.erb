@@ -1,75 +1,140 @@
 <div class="container">
-
-
-  <div class="row">
-    <div class="col-md-8" style="background-color: #18BC9C;padding-bottom: 10px;padding-top: 10px">
-      <div style="font-size: 50px; padding-left: 50px">
-        <%= image_tag "profile.png" %>
-        Learning RoR!
-      </div>
-
+  <div class="row" >
+    <div class="col-md-8" >
+      <%= image_tag "ucas.png" %>
+      <%= image_tag "home.png" %>
     </div>
-
-    <div class="col-md-4">
-      <h1>在线选课系统样本</h1>
-      <p>这个样本系统是基于国科大研究生课程(高级软件工程)开发的项目,目的是帮助入门者学习RoR(Ruby on Rails),这是适合新学者的入手的第一个项目</p>
-      <p>入门者可以在这个样本系统上增加更多的功能:</p>
-      <ul>
-
-        <li class="text-danger">
-          处理选课冲突、控制选课人数
-        </li>
-        <li class="text-danger">
-          统计选课学分,增加选课的开放、关闭功能
-        </li>
-        <li class="text-danger">
-          自定义管理员后台
-        </li>
-        <li class="text-danger">
-          基于OAuth的授权登陆
-        </li>
-        <li class="text-danger">
-          Excel格式的数据导入
-        </li>
-      </ul>
-
-    </div>
-
-  </div>
-
-  <hr>
-
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="alert alert-info text-center">
-        开发此项目,你需要具备以下的知识:
+    
+    <div class="col-md-12" style="padding-bottom: 10px;padding-top: 10px;padding-left: 35px">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          </ol>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <%= image_tag "news1.jpg" %>
+            </div>
+            <div class="item">
+              <%= image_tag "news2.jpg" %>
+            </div>
+            <div class="item">
+              <%= image_tag "news3.jpg" %>
+            </div>
+            <div class="item">
+              <%= image_tag "news4.jpg" %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
+    <hr style="margin-left: 20px;margin-right: 90px;">
+    <div class="col-md-8" style="padding-left: 20px;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span>
+              <i class="glyphicon glyphicon-th-list"></i>
+            </span>
+            通知公告
+          </h3>
+        </div>
+        <div class="panel-body" style="min-height: 450px">
+          <table class="table table-striped table-bordered table-advance table-hover">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>标题</th>
+                    <th>发布时间</th>
+                </tr>
+              </thead>
+              <tbody>
+            <tr>
+                <td>1</td>
+                <td><a href="" target="_blank">英语B免修考试报名通知</a></td>
+                <td>2017-11-10</td>
+                      </tr>
+            <tr>
+                <td>2</td>
+                <td><a href="" target="_blank">2017-2018秋季学期课程考试时间安排</a></td>
+                <td>2017-11-02</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><a href="" target="_blank">英语B课程增容通知</a></td>
+                <td>2017-09-14</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><a href="" target="_blank">2017-2018学年春季学期预计开课统计</a></td>
+                <td>2017-09-12</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><a href="" target="_blank">2017-2018学年核心课列表、专硕对应一级学科表、公管学院两用课程信息</a></td>
+                <td>2017-09-07</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><a href="" target="_blank">2017-2018学年秋季学期研究生网络选课说明</a></td>
+                <td>2017-09-04</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td><a href="" target="_blank">核心课修读问题Q&A</a></td>
+                <td>2017-09-04</td>
+                      </tr>
+            <tr>
+                <td>8</td>
+                <td><a href="" target="_blank">2016-2017学年夏季学期与2017年暑期学校集中教学研究生选课说明</a></td>
+                <td>2017-05-24</td>
+            </tr>
+            </tbody>
+          </table><!--//table:end-->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" style="padding-right: 90px;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span>
+              <i class="glyphicon glyphicon-road"></i>           
+            </span>
+            相关链接
+          </h3>
+        </div>
+        <div class="panel-body" style="min-height: 200px">
+          <table class="table">
+            <tbody>
+              <tr>
+                  <td><a href="http://www.moe.edu.cn/"><i class="glyphicon glyphicon-link"></i>  中华人民共和国教育部</a></td>  
+              </tr>
+              <tr>
+                  <td><a href="http://www.csadge.edu.cn/"><i class="glyphicon glyphicon-link"></i>  中国学位与研究生教育学会</a></td>  
+              </tr>
+              <tr>
+                  <td><a href="http://www.meng.edu.cn/"><i class="glyphicon glyphicon-link"></i>  全国工程硕士研究生教育网</a></td>  
+              </tr>
+              <tr>
+                  <td><a href="http://www.nlc.gov.cn/"><i class="glyphicon glyphicon-link"></i>  中国国家图书馆</a></td>  
+              </tr>
+              <tr>
+                  <td><a href="http://www.las.ac.cn/"><i class="glyphicon glyphicon-link"></i>  中国科学院国家科学图书馆</a></td>  
+              </tr>
+              <tr>
+                  <td><a href="http://www1.csdb.cn/"><i class="glyphicon glyphicon-link"></i>  中国科学院科学数据库</a></td>  
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
-
-  <div class="row">
-    <div class="col-md-4">
-      <h2>Bootstrap</h2>
-      <p>Bootstrap，来自 Twitter，是目前很受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷. 它由Twitter的设计师Mark
-        Otto和Jacob Thornton合作开发，是一个CSS/HTML框架。Bootstrap提供了优雅的HTML和CSS规范，它即是由动态CSS语言Less写成。</p>
-      <a class="btn btn-info" href="http://www.w3schools.com/bootstrap/">More Info</a>
-    </div>
-
-    <div class="col-md-4">
-      <h2>Javascript/CSS</h2>
-      <p>JavaScript一种直译式脚本语言,广泛用于客户端的脚本语言,是一种动态类型、弱类型、基于原型的语言，内置支持类型，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。CSS
-        (Cascading Style Sheets)是一种用来表现HTML样式的样式语言,能够真正做到网页表现与内容分离。
-      </p>
-      <a class="btn btn-info" href="http://www.runoob.com/js/js-tutorial.html">More Info</a>
-    </div>
-
-    <div class="col-md-4">
-      <h2>Rails Framework</h2>
-      <p>Rails基于MVC（模型- 视图- 控制器）设计模式。从视图中的Ajax应用，到控制器中的访问请求和反馈，到封装数据库的模型，Rails
-        为你提供一个纯Ruby的开发环境,它基于一种计算机软件语言Ruby,给程序开发人员提供了强大的框架支持。Rails结合了PHP体系的优点（快速开发）和Java体系的优点（程序规整）</p>
-      <a class="btn btn-info" href="http://guides.ruby-china.org/">More Info</a>
-    </div>
-  </div>
+  
 </div>
