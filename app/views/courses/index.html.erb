@@ -38,7 +38,7 @@
                   <td><%= course.limit_num %></td>                <!--显示课程限制选课人数-->
                   <td><%= course.credit %></td>
                   <td><%= course.exam_type %></td>
-                  <td><%= course.teacher&.name %></td>
+                  <td><%= course.teacher.name %></td>
 
                   <% if teacher_logged_in? %>
                       <td><%= link_to "编辑", edit_course_url(course), class: 'btn btn-xs btn-info' %></td>
