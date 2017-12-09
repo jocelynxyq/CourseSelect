@@ -25,13 +25,13 @@
 }
 
 footer {
-  background-color: #555;
-  color: white;
+  background-color: #f0f0f0;
+  color: #757575;
   padding: 10px;
 }
 
 .body-background{
-  background-image: image-url('background.jpg');
+  background-image: image-url('bg1.jpg');
   //background-color: #DADADA;
   //background-repeat: no-repeat;
   //background-size: 100% 100%;
@@ -45,6 +45,29 @@ body{
 html {
   height: 100%;
 }
+
+.navbar-blue{
+  background-color: #0066cc;
+  color:#fff;
+  border:none;
+}
+
+.navbar .brand {
+  display: block;
+  float: left;
+  padding: 10px 20px 10px;
+  margin-left: -110px;
+  font-size: 20px;
+  font-weight: 200;
+  color: #777777;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+.navbar-name, .navbar-white,.navbar-name:hover{
+  color:#fff;
+}
+
+
 
 
 
