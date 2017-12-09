@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div id="notice_detail" class="panel panel-primary filterable">
+      <div class="panel-body">
+        <div class="notice_head">
+          <h3><%= @notice.title %></h3>
+          <span>
+            <i class="glyphicon glyphicon-calendar"></i>
+            <%= @notice.created_at.strftime('%Y年%m月%d日') %>
+          </span>
+          &nbsp&nbsp&nbsp&nbsp
+          <% if admin_logged_in? %>
+            <span>
+              <i class="glyphicon glyphicon-edit"></i>
+              <%= link_to '编辑', "/admin/notice/#{@notice.id}/edit" %>
+            </span>
+          <% end %>
+        </div>
+        <hr style="">
+        <% @content = @notice.content.split("\n") %>
+        <% @content.each do |content| %>
+          <p style="line-height: 150%; font-family: 楷体; font-size: 19px;"><%= content[0..content.length-4] %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
