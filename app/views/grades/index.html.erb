@@ -18,7 +18,7 @@
                 <%= form_tag 'grades/export', multipart: true do %>
                     <div class="file_style">
                       <input type="hidden" value="<%= @course.id %>" name="course_id">
-                      <%= link_to "导出成绩单", grades_export_url(:course_id => @course.id, :format => 'xls'), :class => "btn btn-success btn-xs" %>
+                      <%= link_to "导出成绩单", grades_export_url(:course_id => @course.id, :format => 'xlsx'), :class => "btn btn-success btn-xs" %>
                     </div>
                 <% end %>
               </div>
