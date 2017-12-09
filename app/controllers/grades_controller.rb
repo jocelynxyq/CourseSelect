@@ -25,7 +25,7 @@ class GradesController < ApplicationController
     end
   end
 
-  def export
+def export
     if teacher_logged_in?
       @course=Course.find_by_id(params[:course_id])
       @grades=@course.grades
@@ -49,7 +49,7 @@ class GradesController < ApplicationController
         return
       }
     end
-  end
+end
 
 
   private
