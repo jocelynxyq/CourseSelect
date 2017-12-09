@@ -51,48 +51,16 @@
                     <th>标题</th>
                     <th>发布时间</th>
                 </tr>
-              </thead>
-              <tbody>
-            <tr>
-                <td>1</td>
-                <td><a href="" target="_blank">英语B免修考试报名通知</a></td>
-                <td>2017-11-10</td>
-                      </tr>
-            <tr>
-                <td>2</td>
-                <td><a href="" target="_blank">2017-2018秋季学期课程考试时间安排</a></td>
-                <td>2017-11-02</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><a href="" target="_blank">英语B课程增容通知</a></td>
-                <td>2017-09-14</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td><a href="" target="_blank">2017-2018学年春季学期预计开课统计</a></td>
-                <td>2017-09-12</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td><a href="" target="_blank">2017-2018学年核心课列表、专硕对应一级学科表、公管学院两用课程信息</a></td>
-                <td>2017-09-07</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td><a href="" target="_blank">2017-2018学年秋季学期研究生网络选课说明</a></td>
-                <td>2017-09-04</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td><a href="" target="_blank">核心课修读问题Q&A</a></td>
-                <td>2017-09-04</td>
-                      </tr>
-            <tr>
-                <td>8</td>
-                <td><a href="" target="_blank">2016-2017学年夏季学期与2017年暑期学校集中教学研究生选课说明</a></td>
-                <td>2017-05-24</td>
-            </tr>
+            </thead>
+            <tbody>
+              <% number = 0 %>
+              <% @notice.each do |notice| %>
+                <tr>
+                  <td><%= number += 1 %></td>
+                  <td><%= link_to notice.title, notice_url(notice) %></td>
+                  <td><%= notice.created_at.strftime('%Y-%m-%d') %></td>
+                </tr>
+              <% end %>
             </tbody>
           </table><!--//table:end-->
         </div>
