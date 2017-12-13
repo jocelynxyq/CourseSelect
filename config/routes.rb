@@ -21,14 +21,15 @@ Rails.application.routes.draw do
 
   resources :courses do
     member do
-      get :select
       get :quit
       get :open
       get :close
       get :outline
     end
     collection do
+      post :select
       get :list
+      post :list
     end
   end
 

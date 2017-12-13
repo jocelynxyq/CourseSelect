@@ -16,7 +16,7 @@
         <% elsif teacher_logged_in? %>
             <li class=<%= "active" if params[:controller]=="courses" %>> <%= link_to "课程管理", courses_path,class:'navbar-white' %></li>
         <% elsif admin_logged_in? %>
-            <li> <%= link_to "控制面板", rails_admin_path,class:'navbar-white' %></li>
+            <li> <%= link_to "后台管理", rails_admin_path,class:'navbar-white' %></li>
         <% end %>
 
       </ul>

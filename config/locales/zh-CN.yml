@@ -1,7 +1,64 @@
 zh-CN:
+  activerecord:
+    models:
+      course: "课程"
+      grade: "成绩"
+      notice: "通知"
+      user: "用户"
+    attributes:
+      course:
+        id: "课程ID"
+        name: "课程名称"
+        course_code: "课程编号"
+        course_type: "课程属性"
+        teaching_type: "授课方式"
+        exam_type: "考试方式"
+        credit: "课时/学分"
+        limit_num: "限选人数"
+        student_num: "已选人数"
+        class_room: "上课地点"
+        course_time: "上课时间"
+        course_week: "上课周数"
+        teacher: "授课教师"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+        open: "是否开放"
+        outline: "课程大纲"
+        grades: "成绩记录"
+        users: "学生姓名"
+      grade:
+        id: "成绩ID"
+        course: "课程名称"
+        user: "学生姓名"
+        grade: "成绩"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+      user:
+        id: "用户编号"
+        name: "姓名"
+        email: "邮箱"
+        num: "学号"
+        major: "专业"
+        department: "单位"
+        password_digest: "密码摘要"
+        admin: "管理员角色"
+        teacher: "教师角色"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+        grades: "成绩记录"
+        courses: "选课记录"
+        teaching_courses: "授课记录"
+      notice:
+        id: "通知编号"
+        user: "用户"
+        title: "标题"
+        content: "内容"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+  
   admin:
     home:
-      name: "首页"
+      name: "选课首页"
     pagination:
       previous: "&laquo; 上一页"
       next: "下一页 &raquo;"
@@ -31,7 +88,7 @@ zh-CN:
       model_not_found: "找不到'%{model}' Model"
       object_not_found: "找不到id为'%{id}'的'%{model}'"
     table_headers:
-      model_name: "Model 名"
+      model_name: "数据模型"
       last_used: "上次使用"
       records: "记录"
       username: "用户"
@@ -41,9 +98,9 @@ zh-CN:
       message: "信息"
     actions:
       dashboard:
-        title: "网站管理"
-        menu: "信息板"
-        breadcrumb: "信息板"
+        title: "后台管理"
+        menu: "后台首页"
+        breadcrumb: "后台管理"
       index:
         title: "%{model_label_plural}列表"
         menu: "列表"

@@ -59,7 +59,7 @@ class CoursesController < ApplicationController
 
   def list
     #-------QiaoCode--------
-    @courses = Course.where(:open=>true).paginate(page: params[:page], per_page: 4)
+    @courses = Course.where(:open=>true).paginate(page: params[:page], per_page: 10)
     @course = @courses-current_user.courses
     tmp=[]
     @course.each do |course|
@@ -71,15 +71,51 @@ class CoursesController < ApplicationController
   end
 
   def select
-    @course=Course.find_by_id(params[:id])
-    if @course.users.length < @course.limit_num
-      current_user.courses<<@course
-      flash={:suceess => "成功选择课程: #{@course.name}"}
-    else 
-      flash={:danger => "选课失败，#{@course.name} 选课人数已满！"}
+    flash = nil
+    ids = params[:course_select]
+    if ids
+      @course = Course.find(ids)
+      fails_course = []
+      success_course = []
+      @course.each do |course|
+        if course.limit_num != nil
+          if course.users.length < course.limit_num
+            current_user.courses<<course
+            success_course << course.name
+          else
+            fails_course << course.name
+          end
+        else
+          current_user.courses<<course
+          success_course << course.name
+        end
+      end
+      if success_course.length !=0
+        flash = {:success => ("成功选择课程:  " + success_course.join(','))}
+      end
+      if fails_course.length !=0
+        waring_info = fails_course.join(',') +'  人数已满'
+        if flash != nil
+          flash[:warning] = waring_info
+        else
+          flash = {:warning => waring_info}
+        end
+      end
+    else
+      flash={:success => "请勾选课程"}
     end
     redirect_to courses_path, flash: flash
   end
+
+  #   @course=Course.find_by_id(params[:id])
+  #   if @course.users.length < @course.limit_num
+  #     current_user.courses<<@course
+  #     flash={:suceess => "成功选择课程: #{@course.name}"}
+  #   else 
+  #     flash={:danger => "选课失败，#{@course.name} 选课人数已满！"}
+  #   end
+  #   redirect_to courses_path, flash: flash
+  # end
 
   def quit
     @course=Course.find_by_id(params[:id])
