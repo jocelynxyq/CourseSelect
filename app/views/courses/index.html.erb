@@ -34,7 +34,7 @@
 
                   <td><%= course.course_code %></td>
                   <td><%= link_to course.name, outline_course_url(course) %></td><!--加入课程大纲超链接-->
-                  <td><%= course.users.length %></td>               <!--显示已选人数-->
+                  <td><%= link_to course.users.length, selected_course_url(course) %></td>               <!--显示已选人数-->
                   <td><%= course.limit_num %></td>                <!--显示课程限制选课人数-->
                   <td><%= course.credit %></td>
                   <td><%= course.exam_type %></td>

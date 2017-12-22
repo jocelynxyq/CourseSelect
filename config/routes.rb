@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       get :open
       get :close
       get :outline
+      get :selected
+      get :chart
     end
     collection do
       post :select
