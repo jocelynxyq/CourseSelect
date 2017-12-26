@@ -11,6 +11,7 @@
         <div class="panel-heading">
           <h3 class="panel-title"><%=@course.name %>选课情况</h3>
          <div style="position: absolute;right: 15px ;top: 0px"> <%= link_to "图表展示", chart_course_url(@course), class: 'btn btn-block btn-info' %></div>
+         <div style="position: absolute;right: 100px ;top: 0px"> <%= link_to "导出学生名单", grades_exportcourse_url(:course_id => @course.id, :format => 'xls'), class: 'btn btn-block btn-info' %></div>
         </div>
 
 

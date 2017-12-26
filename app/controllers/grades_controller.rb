@@ -25,6 +25,8 @@ class GradesController < ApplicationController
     end
   end
 
+
+#导出成绩表
 def export
     if teacher_logged_in?
       @course=Course.find_by_id(params[:course_id])
@@ -43,6 +45,33 @@ def export
         @grades.each_with_index do |grade,i|
           #puts(grade.user.num)
           sheet1.row(i+1).push grade.user.num, grade.user.name, grade.user.major, grade.user.department, grade.course.name, grade.grade
+        end
+        book.write 'wqs.xls'
+        send_file 'wqs.xls',:type => "application/vnd.ms-excel", :filename => "#{@course.name}.xls", :stream => false
+        return
+      }
+    end
+end
+
+#导出课程表
+def exportcourse
+    if teacher_logged_in?
+      @course=Course.find_by_id(params[:course_id])
+      @grades=@course.grades
+    else
+      redirect_to root_path, flash: {:warning=>"请先登陆"}
+    end
+
+    respond_to do |format|
+      format.html
+      format.xls {
+        require 'spreadsheet'
+        book = Spreadsheet::Workbook.new
+        sheet1 = book.create_worksheet
+        sheet1.row(0).concat %w{学号 姓名 专业 培养单位}
+        @grades.each_with_index do |grade,i|
+          #puts(grade.user.num)
+          sheet1.row(i+1).push grade.user.num, grade.user.name, grade.user.major, grade.user.department
         end
         book.write 'wqs.xls'
         send_file 'wqs.xls',:type => "application/vnd.ms-excel", :filename => "#{@course.name}.xls", :stream => false
