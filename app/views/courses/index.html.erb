@@ -18,6 +18,13 @@
         <div class="panel-body">
           <table class="table table-responsive table-condensed table-hover">
             <thead>
+            <% credit = 0 %>
+            <% @course.each do |course| %>
+                <% credit=credit+course.credit.split('/').at(1).to_f %>
+            <% end %>
+            <tr>
+              <td>All Credit is:<%= credit %></td>
+            </tr>
             <tr>
               <th>课程编号</th>
               <th>课程名称</th>
