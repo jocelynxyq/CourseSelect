@@ -26,6 +26,14 @@ class GradesController < ApplicationController
         end
       end
       @grades=tmp
+      tmp1=[]
+      @grades.each do |grades|
+        if grades.grade >= 60
+          tmp1<<grades
+        end
+      end
+      @grades1=tmp1
+
       # @grades1=@grades.where(:grade > 0).paginate(page: params[:page], per_page: 2)
     else
       redirect_to root_path, flash: {:warning=>"请先登陆"}

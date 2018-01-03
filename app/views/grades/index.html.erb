@@ -84,12 +84,21 @@
                       <td><%= grade.grade %></td>
                       <td><%= grade.course.credit %></td>
                       <td><%= grade.course.course_type %></td>
+
                   <%end%>
-
-
-
                 </tr>
+
             <% end %>
+            <% if student_logged_in?%>
+                <% getcredit=0.0 %>
+                <% @grades1.each do |f| %>
+                   <% getcredit = getcredit + f.course.credit.split('/').at(1).to_f %>
+                 <% end %>
+                 <tr>
+                   <td>已获得的学分:<%= getcredit %></td>
+                 </tr>
+            <% end %>
+
             </tbody>
           </table>
 
