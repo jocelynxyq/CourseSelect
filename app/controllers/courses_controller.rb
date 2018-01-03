@@ -113,7 +113,7 @@ class CoursesController < ApplicationController
         flash = {:success => ("成功选择课程:  " + success_course.join(','))}
       end
       if fails_course.length !=0
-        waring_info = fails_course.join(',') +'  人数已满'
+        waring_info = fails_course.join(',') +'  存在選課衝突'
         if flash != nil
           flash[:warning] = waring_info
         else
