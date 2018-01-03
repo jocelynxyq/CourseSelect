@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7b1c0f9-5303-4042-90a5-05cecbda0e94" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/grades_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/grades_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/grades/index.html.erb" afterPath="$PROJECT_DIR$/app/views/grades/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="vim.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -106,7 +105,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-              <folding />
+              <folding>
+                <marker date="1514987080403" expanded="true" signature="1817:2713" ph="..." />
+                <marker date="1514987080403" expanded="true" signature="1817:2690" ph="do ... end" />
+                <marker date="1514987080403" expanded="true" signature="1817:2670" ph="..." />
+                <marker date="1514987080403" expanded="true" signature="1849:2646" ph="if ... end" />
+                <marker date="1514987080403" expanded="true" signature="2005:2306" ph="if ... end" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,8 +119,8 @@
       <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/grades/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="57" column="31" lean-forward="true" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+            <state relative-caret-position="-504">
+              <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -549,12 +554,12 @@
       <workItem from="1514975908006" duration="1760000" />
       <workItem from="1514981948522" duration="1791000" />
       <workItem from="1514983757632" duration="1609000" />
-      <workItem from="1514985859812" duration="998000" />
+      <workItem from="1514985859812" duration="1299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6463000" />
+    <option name="totallyTimeSpent" value="6764000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -959,14 +964,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-          <folding />
+          <folding>
+            <marker date="1514987080403" expanded="true" signature="1817:2713" ph="..." />
+            <marker date="1514987080403" expanded="true" signature="1817:2690" ph="do ... end" />
+            <marker date="1514987080403" expanded="true" signature="1817:2670" ph="..." />
+            <marker date="1514987080403" expanded="true" signature="1849:2646" ph="if ... end" />
+            <marker date="1514987080403" expanded="true" signature="2005:2306" ph="if ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/grades/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="57" column="31" lean-forward="true" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        <state relative-caret-position="-504">
+          <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
           <folding />
         </state>
       </provider>
