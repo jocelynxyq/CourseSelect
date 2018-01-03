@@ -25,31 +25,25 @@
               </div>
           <% end %>
 
+          <% if student_logged_in? %>
+              <div align="center">
+                <h5>在中国科学院大学就读期间成绩</h5>
+                <table align="center" border="0" cellpadding="2" cellspacing="2">
+                  <tr>
+                    <td>姓　　名：<%= current_user.name %>　</td>
+                    <td>培养单位：<%= current_user.department %>　</td>
+                  </tr>
+                  <tr>
+                    <td>学　　号：<%= current_user.num %>　</td>
+                    <td>专　　业：<%= current_user.major %>　</td>
+                  </tr>
+                </table>
+              </div>
+
+          <% end %>
+
           <table class="table table-striped table-hover">
-            <% if student_logged_in? %>
-                <thead>
 
-                <tr>
-                  <th>学号</th>
-                  <th>名字</th>
-                  <th>专业</th>
-                  <th>培养单位</th>
-
-                </tr>
-                </thead>
-                <tbody>
-
-                <% @grades.each do |grade| %>
-                    <tr>
-                      <td><%= grade.user.num %></td>
-                      <td><%= grade.user.name %></td>
-                      <td><%= grade.user.major %></td>
-                      <td><%= grade.user.department %></td>
-                      <% break %>
-                    </tr>
-                <% end %>
-                </tbody>
-            <% end %>
 
 
             <thead>
@@ -60,14 +54,14 @@
                   <th>名字</th>
                   <th>专业</th>
                   <th>培养单位</th>
-                  <th>課程</th>
+                  <th>课程</th>
                   <th>目前分数</th>
               <% end %>
               <% if student_logged_in? %>
-                  <th>課程</th>
+                  <th>课程</th>
                   <th>目前分数</th>
-                  <th>課時/學分</th>
-                  <th>課程類型</th>
+                  <th>课时/学分</th>
+                  <th>课程类型</th>
               <%end%>
             </tr>
             </thead>
@@ -98,7 +92,7 @@
             <% end %>
             </tbody>
           </table>
-          <%= will_paginate @grades %>
+
         </div>
       </div>
     </div>
