@@ -32,7 +32,6 @@
               <th>限选人数</th> <!--加入限选人数栏-->
               <th>课时/学分</th>
               <th>考试方式</th>
-              <th>主讲教师</th>
             </tr>
 
             <tbody>
@@ -41,11 +40,14 @@
 
                   <td><%= course.course_code %></td>
                   <td><%= link_to course.name, outline_course_url(course) %></td><!--加入课程大纲超链接-->
+                  <% if teacher_logged_in? %>
                   <td><%= link_to course.users.length, selected_course_url(course) %></td>               <!--显示已选人数-->
+                  <% elsif student_logged_in? %>
+                  <td><%= course.users.length %></td>
+                  <% end %>
                   <td><%= course.limit_num %></td>                <!--显示课程限制选课人数-->
                   <td><%= course.credit %></td>
                   <td><%= course.exam_type %></td>
-                  <td><%= course.teacher.name %></td>
 
                   <% if teacher_logged_in? %>
                       <td><%= link_to "编辑", edit_course_url(course), class: 'btn btn-xs btn-info' %></td>
