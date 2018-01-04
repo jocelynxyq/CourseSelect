@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :courses do
     member do
+      get :schedule
       get :quit
       get :open
       get :close

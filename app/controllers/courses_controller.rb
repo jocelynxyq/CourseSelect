@@ -80,6 +80,8 @@ class CoursesController < ApplicationController
     #-------QiaoCode--------
     @courses = Course.where(:open=>true).paginate(page: params[:page], per_page: 20)
     @course = @courses-current_user.courses
+    @course_time = get_course_info(@course, 'course_time')
+    @course_exam_type = get_course_info(@course, 'exam_type')
     tmp=[]
     @course.each do |course|
       if course.open==true
@@ -87,6 +89,9 @@ class CoursesController < ApplicationController
       end
     end
     @course=tmp
+    if request.post?
+      @course=course_filter_by_condition(@course, params, ['course_time', 'exam_type'])
+    end
   end
 
   def select
@@ -142,9 +147,17 @@ class CoursesController < ApplicationController
     flash={:success => "成功退选课程: #{@course.name}"}
     redirect_to courses_path, flash: flash
   end
-
+  
+  
 
   #-------------------------for both teachers and students----------------------
+  
+  def schedule
+    @course=current_user.courses
+    @user=current_user
+    @course_time_table = get_current_curriculum_table(@course,@user)
+  end
+  
   # 增加outline方法
   def outline
     @course = Course.find_by_id(params[:id])

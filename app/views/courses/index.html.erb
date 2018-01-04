@@ -18,26 +18,28 @@
         <div class="panel-body">
           <table class="table table-responsive table-condensed table-hover">
             <thead>
-            <% if student_logged_in? %>
-            <% credit = 0 %>
-            <% @course.each do |course| %>
+              <% if student_logged_in? %>
+              <% credit = 0 %>
+              <% @course.each do |course| %>
                 <% credit=credit+course.credit.split('/').at(1).to_f %>
-            <% end %>
-            <tr>
-              <td>选课总学分:<%= credit %></td>
-            </tr>
-            <% end %>
-            <tr>
-              <th>课程编号</th>
-              <th>课程名称</th>
-              <th>已选人数</th> <!--加入选课人数栏-->
-              <th>限选人数</th> <!--加入限选人数栏-->
-              <th>课时/学分</th>
-              <th>考试方式</th>
-            </tr>
-
+              <% end %>
+            </thead>
             <tbody>
-            <% @course.each do |course| %>
+              <tr>
+                选课总学分:<%= credit %>
+              </tr>
+              <% end %>
+              <tr>
+                <th>课程编号</th>
+                <th>课程名称</th>
+                <th>已选人数</th> <!--加入选课人数栏-->
+                <th>限选人数</th> <!--加入限选人数栏-->
+                <th>课时/学分</th>
+                <th>考试方式</th>
+              </tr>
+
+            
+              <% @course.each do |course| %>
                 <tr>
 
                   <td><%= course.course_code %></td>
@@ -66,6 +68,10 @@
             <% end %>
             </tbody>
           </table>
+            <div class="col-sm-offset-10 col-sm-2">
+              <%= link_to '查看课表', schedule_course_url(current_user.courses), :class => "btn btn-success" %>
+            </div>
+
           <%= will_paginate @course %>
         </div>
       </div>

@@ -10,6 +10,16 @@
           <h3 class="panel-title">选修课程</h3>
         </div>
         <div class="panel-body" style="min-height: 450px">
+          <div class="row">
+            <%= form_tag("/courses/list", method: "post") do %>
+                <div class="form-group">
+                  <%= render 'courses/search_course_select_form', info: @course_time, submit_name: "course_time", name: "上课时间" %>
+                  <%= render 'courses/search_course_select_form', info: @course_exam_type, submit_name: "exam_type", name: "考试方式" %>
+                </div>
+                <button type="submit" class="btn btn-info">筛选</button>
+            <% end %>
+          </div>
+          <hr>
           <%= render 'courses/course_select' %>
           <%= will_paginate @courses %>
         </div>
