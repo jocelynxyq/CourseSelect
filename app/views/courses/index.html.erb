@@ -36,9 +36,13 @@
                 <th>限选人数</th> <!--加入限选人数栏-->
                 <th>课时/学分</th>
                 <th>考试方式</th>
-                <th>主讲教师</th>
-                <th>上课地点</th>
-                <th>上课时间</th>
+                <% if student_logged_in? %>
+                  <th>主讲教师</th>
+                <% end %>
+                <% if teacher_logged_in? %>
+                  <th>上课地点</th>
+                  <th>上课时间</th>
+                <% end %>
               </tr>
 
             
@@ -55,9 +59,15 @@
                   <td><%= course.limit_num %></td>                <!--显示课程限制选课人数-->
                   <td><%= course.credit %></td>
                   <td><%= course.exam_type %></td>
+                  <% if student_logged_in? %>
                   <td><%= course.teacher.name %></td>  
+                <% end %>
+                <% if teacher_logged_in? %>
                   <td><%= course.class_room %></td>
                   <td><%= course.course_time %></td>
+                <% end %>
+                  
+                  
                   <% if teacher_logged_in? %>
                       <td><%= link_to "编辑", edit_course_url(course), class: 'btn btn-xs btn-info' %></td>
                       <% if course.open? %>
