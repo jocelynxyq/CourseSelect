@@ -68,10 +68,6 @@
             <% end %>
             </tbody>
           </table>
-            <div class="col-sm-offset-10 col-sm-2">
-              <%= link_to '查看课表', schedule_course_url(current_user.courses), :class => "btn btn-success" %>
-            </div>
-
           <%= will_paginate @course %>
         </div>
       </div>

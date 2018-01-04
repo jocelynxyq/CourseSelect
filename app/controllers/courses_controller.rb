@@ -118,7 +118,7 @@ class CoursesController < ApplicationController
         flash = {:success => ("成功选择课程:  " + success_course.join(','))}
       end
       if fails_course.length !=0
-        waring_info = fails_course.join(',') +'  存在选课冲突'
+        waring_info = fails_course.join(',') +'  选课失败'
         if flash != nil
           flash[:warning] = waring_info
         else
@@ -153,7 +153,12 @@ class CoursesController < ApplicationController
   #-------------------------for both teachers and students----------------------
   
   def schedule
-    @course=current_user.courses
+    if student_logged_in?
+      @course=current_user.courses
+    end
+    if teacher_logged_in?
+      @course=current_user.teaching_courses
+    end
     @user=current_user
     @course_time_table = get_current_curriculum_table(@course,@user)
   end

@@ -37,10 +37,14 @@
                   <% (0...@course_time_table[i].length).each do |j| %>
                     <% if @course_time_table[i][j][0]!='' %>
                       <td class="info", class='row<%= i+1 %> col<%=j+1%>'>
-                        <a href="#"><%= @course_time_table[i][j][0] %></a>
+                        <a href="#" data-toggle="popover" data-rights='<%= @course_time_table[i][j][0] %>' data-weeks='<%= @course_time_table[i][j][1] %>' data-rooms='<%= @course_time_table[i][j][2] %>' rel="drevil">
+                          <%= @course_time_table[i][j][0] %>
+                          <%= "("+@course_time_table[i][j][2]+")" %>
+                        </a>
                       </td>
                     <% else %>
                       <td class='row<%= i+1 %> col<%=j+1%>'><%= @course_time_table[i][j][0] %></td>
+                      
                     <% end %>
                   <% end %>
                 </tr>
@@ -52,3 +56,37 @@
     </div>
   </div>
 </div>
+<script>
+  $(function(){
+    $("[rel=drevil]").popover({
+        trigger:'manual',
+        placement : 'top', 
+        trigger: 'hover',
+        container: 'body',
+        title: function() {
+          var data = $(this).data('rights');
+          return data;
+        },
+        html: 'true', //needed to show html of course
+        content :function() {
+            var course_time = $(this).data('weeks');
+            var course_week = $(this).data('rooms');
+            return course_time + " | " + course_week;
+        }, 
+        animation: false
+    }).on("mouseenter", function () {
+        var _this = this;
+        $(this).popover("show");
+        $(this).siblings(".popover").on("mouseleave", function () {
+           $(_this).popover('hide');
+        });
+    }).on("mouseleave", function () {
+        var _this = this;
+        setTimeout(function () {
+            if (!$(".popover:hover").length) {
+                $(_this).popover("hide")
+            }
+        }, 100);
+    });
+  });
+</script>

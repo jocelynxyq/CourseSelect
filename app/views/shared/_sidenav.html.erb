@@ -32,6 +32,11 @@
                   <span class="glyphicon glyphicon-chevron-right"></span> 创建新课程
               <% end %>
             </li>
+            <li class="list-group-item">
+              <%= link_to schedule_course_url(current_user) do %>
+                  <span class="glyphicon glyphicon-chevron-right"></span> 教师课表
+              <% end %>
+            </li>
         <% end %>
 
         <% if student_logged_in? %>
@@ -47,8 +52,12 @@
                   <span class="label label-info pull-right"><%= current_user.courses.count %></span>
               <% end %>
             </li>
+            <li class="list-group-item">
+              <%= link_to schedule_course_url(current_user) do %>
+                  <span class="glyphicon glyphicon-chevron-right"></span> 个人课表
+              <% end %>
+            </li>
         <% end %>
-
       </ul>
     </div>
   </div>
