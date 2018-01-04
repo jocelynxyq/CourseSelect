@@ -99,32 +99,38 @@ class CoursesController < ApplicationController
     ids = params[:course_select]
     if ids
       @course = Course.find(ids)
-      fails_course = []
-      success_course = []
-      @course.each do |course|
-        if course.limit_num != nil
-          if course.users.length < course.limit_num
+      if course_conflict?(current_user.courses, @course)
+        flash={:warning => "《#{course_conflict?(current_user.courses, @course)}》课程与您现有的课程时间冲突"}
+      else 
+        fails_course = []
+        success_course = []
+        @course.each do |course|
+          if course.limit_num != nil
+            if course.users.length < course.limit_num
+              current_user.courses<<course
+              success_course << course.name
+            else
+              fails_course << course.name
+            end
+          else
             current_user.courses<<course
             success_course << course.name
-          else
-            fails_course << course.name
           end
-        else
-          current_user.courses<<course
-          success_course << course.name
+        end
+        if success_course.length !=0
+          flash = {:success => ("成功选择课程:  " + success_course.join(','))}
+        end
+        if fails_course.length !=0
+          waring_info = fails_course.join(',') +'  人数已满'
+          if flash != nil
+            flash[:warning] = waring_info
+          else
+            flash = {:warning => waring_info}
+          end
         end
       end
-      if success_course.length !=0
-        flash = {:success => ("成功选择课程:  " + success_course.join(','))}
-      end
-      if fails_course.length !=0
-        waring_info = fails_course.join(',') +'  选课失败'
-        if flash != nil
-          flash[:warning] = waring_info
-        else
-          flash = {:warning => waring_info}
-        end
-      end
+      
+      
     else
       flash={:success => "请勾选课程"}
     end

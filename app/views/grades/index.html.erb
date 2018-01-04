@@ -55,53 +55,52 @@
                   <th>专业</th>
                   <th>培养单位</th>
                   <th>课程</th>
-                  <th>目前分数</th>
+                  <th>课程分数</th>
               <% end %>
               <% if student_logged_in? %>
-                  <th>课程</th>
-                  <th>目前分数</th>
-                  <th>课时/学分</th>
+                  <th>课程名称</th>
+                  <th>分数</th>
+                  <th>学分</th>
                   <th>课程类型</th>
               <%end%>
             </tr>
             </thead>
             <tbody>
-
+            
             <% @grades.each do |grade| %>
-                <tr>
-                  <% if teacher_logged_in? %>
-                      <td><%= grade.user.num %></td>
-                      <td><%= grade.user.name %></td>
-                      <td><%= grade.user.major %></td>
-                      <td><%= grade.user.department %></td>
-                      <%= form_for grade, url: grade_url(id: grade.id, course_id: grade.course.id), method: :patch do |f| %>
-                          <td><%= f.text_field :grade %></td>
-                          <td><%= f.submit "提交", class: "btn btn-success btn-xs" %></td>
-                      <% end %>
+              <tr>
+                <% if teacher_logged_in? %>
+                  <td><%= grade.user.num %></td>
+                  <td><%= grade.user.name %></td>
+                  <td><%= grade.user.major %></td>
+                  <td><%= grade.user.department %></td>
+                  <%= form_for grade, url: grade_url(id: grade.id, course_id: grade.course.id), method: :patch do |f| %>
+                    <td><%= f.text_field :grade %></td>
+                    <td><%= f.submit "提交", class: "btn btn-success btn-xs" %></td>
                   <% end %>
-                  <% if student_logged_in?%>
-                      <td><%= grade.course.name %></td>
-                      <td><%= grade.grade %></td>
-                      <td><%= grade.course.credit %></td>
-                      <td><%= grade.course.course_type %></td>
-
-                  <%end%>
-                </tr>
-
+                <% end %>
+                <% if student_logged_in?%>
+                  <td><%= grade.course.name %></td>
+                  <td><%= grade.grade %></td>
+                  <td><%= grade.course.credit.split('/').at(1).to_f %></td>
+                  <td><%= grade.course.course_type %></td>
+                <%end%>
+              </tr>
             <% end %>
-            <% if student_logged_in?%>
-                <% getcredit=0.0 %>
-                <% @grades1.each do |f| %>
-                   <% getcredit = getcredit + f.course.credit.split('/').at(1).to_f %>
-                 <% end %>
-                 <tr>
-                   <td>已获得的学分:<%= getcredit %></td>
-                 </tr>
-            <% end %>
-
             </tbody>
           </table>
-
+          <% if student_logged_in?%>
+            <% getcredit=0.0 %>
+            <% getgrade=0.0 %>
+            <% @grades1.each do |f| %>
+              <% getgrade = getgrade + f.grade*f.course.credit.split('/').at(1).to_f %>
+              <% getcredit = getcredit + f.course.credit.split('/').at(1).to_f %>
+            <% end %>
+            <p><strong>已获得的学分：<font size="3" color="red"><%= getcredit.to_i %></font>&nbsp;&nbsp;学分&nbsp;&nbsp;&nbsp;&nbsp;当前加权平均成绩：<font size="3"><%= getgrade/getcredit %></font></strong></p>
+          <% end %>
+          <% if teacher_logged_in? %>
+            <%= will_paginate @grades %>
+          <% end %>
         </div>
       </div>
     </div>
