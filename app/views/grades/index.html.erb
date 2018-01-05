@@ -11,19 +11,21 @@
           <% if student_logged_in? %><h3 class="panel-title">成绩列表</h3><% end %>
         </div>
         <div class="panel-body" style="min-height: 450px">
-
-          <% if teacher_logged_in? %>
-              <div class="row">
-                <div class="col-sm-12" style="padding-bottom: 26px">
-                  <%= form_tag 'grades/export', multipart: true do %>
-                      <div class="file_style">
-                        <input type="hidden" value="<%= @course.id %>" name="course_id">
-                        <%= link_to "导出成绩单", grades_export_url(:course_id => @course.id, :format => 'xls'), :class => "btn btn-success btn-xs" %>
-                      </div>
-                  <% end %>
-                </div>
+        <% if teacher_logged_in? %>
+            <div class="row">
+              <div class="col-sm-12" style="padding-bottom: 26px">
+                <%= form_tag 'grades/import', multipart: true do %>
+                    <div class="file_style">
+                      <input type="hidden" value="<%= @course.id %>" name="course_id">
+                      <input type='text' name='textfield' id='textfield' class="fileText">
+                      <%= file_field_tag :file, :class => "fileInput", :size => "28", :onchange => "document.getElementById('textfield').value=this.value" %>
+                      <%= submit_tag "上传", :class => "btn btn-success btn-xs" %>
+                      <%= link_to "导出", grades_export_url(:course_id => @course.id, :format => 'xls'), :class => "btn btn-success btn-xs" %>
+                    </div>
+                <% end %>
               </div>
-          <% end %>
+            </div>
+            <% end %>
 
           <% if student_logged_in? %>
               <div align="center">

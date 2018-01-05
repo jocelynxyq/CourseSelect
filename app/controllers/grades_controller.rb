@@ -40,6 +40,25 @@ class GradesController < ApplicationController
     end
   end
 
+  def import
+    file = params[:file]
+    begin
+      file_ext = File.extname(file.original_filename)
+      if not [".xls", ".xlsx"].include?(file_ext)
+        flash={:danger => "失败，文件类型不支持"}
+      else
+        spreadsheet = (file_ext == ".xls") ? Roo::Excel.new(file.path) : Roo::Excelx.new(file.path)
+        header = spreadsheet.row(1)
+        (2..spreadsheet.last_row).each do |i|
+          @grade=Grade.find_by_id(spreadsheet.row(i)[0])
+          @grade.update_attributes!(:grade => spreadsheet.row(i)[6])
+        end
+        flash={:success => "上传成功"}
+      end
+      redirect_to grades_path(course_id: params[:course_id]), flash: flash
+    end
+  end
+
 
 #导出成绩表
 def export
@@ -56,10 +75,10 @@ def export
         require 'spreadsheet'
         book = Spreadsheet::Workbook.new
         sheet1 = book.create_worksheet
-        sheet1.row(0).concat %w{学号 姓名 专业 培养单位 课程 成绩}
+        sheet1.row(0).concat %w{成绩序号 学号 姓名 专业 培养单位 课程 成绩}
         @grades.each_with_index do |grade,i|
           #puts(grade.user.num)
-          sheet1.row(i+1).push grade.user.num, grade.user.name, grade.user.major, grade.user.department, grade.course.name, grade.grade
+          sheet1.row(i+1).push grade.id,grade.user.num, grade.user.name, grade.user.major, grade.user.department, grade.course.name, grade.grade
         end
         book.write 'wqs.xls'
         send_file 'wqs.xls',:type => "application/vnd.ms-excel", :filename => "#{@course.name}.xls", :stream => false

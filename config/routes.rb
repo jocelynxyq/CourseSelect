@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   
   get 'grades/exportcourse' =>"grades#exportcourse"
   get 'grades/export' =>"grades#export"
+  post 'grades/import' =>"grades#import"
   get 'sessions/login' => 'sessions#new'
   post 'sessions/login' => 'sessions#create'
   delete 'sessions/logout' => 'sessions#destroy'
