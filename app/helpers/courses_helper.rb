@@ -96,4 +96,15 @@ module CoursesHelper
     false
   end
   
+  def course_name_conflict?(current_courses, to_select_courses)
+    current_courses.each do |current|
+      to_select_courses.each do |toselect|
+        if current.name == toselect.name
+          return toselect.name
+        end
+      end
+    end
+    false
+  end
+  
 end

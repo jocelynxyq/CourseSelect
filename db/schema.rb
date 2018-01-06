@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20171206134115) do
     t.integer  "teacher_id"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.boolean  "open",          default: false
+    t.boolean  "open",          default: true
     t.text     "outline",       default: "本课程暂无大纲"
   end
 

@@ -80,6 +80,7 @@ class CoursesController < ApplicationController
     #-------QiaoCode--------
     @courses = Course.where(:open=>true).paginate(page: params[:page], per_page: 20)
     @course = @courses-current_user.courses
+    @course_type = get_course_info(@course, 'course_type')
     @course_time = get_course_info(@course, 'course_time')
     @course_exam_type = get_course_info(@course, 'exam_type')
     tmp=[]
@@ -90,7 +91,7 @@ class CoursesController < ApplicationController
     end
     @course=tmp
     if request.post?
-      @course=course_filter_by_condition(@course, params, ['course_time', 'exam_type'])
+      @course=course_filter_by_condition(@course, params, ['course_type','course_time', 'exam_type'])
     end
   end
 
@@ -100,7 +101,9 @@ class CoursesController < ApplicationController
     if ids
       @course = Course.find(ids)
       if course_conflict?(current_user.courses, @course)
-        flash={:warning => "《#{course_conflict?(current_user.courses, @course)}》课程与您现有的课程时间冲突"}
+        flash={:warning => "你选择的课程名称为【#{course_conflict?(current_user.courses, @course)}】与您现有课程的上课时间冲突，请重新调整你选的课程，谢谢！"}
+      elsif course_name_conflict?(current_user.courses, @course)
+        flash={:warning => "对不起，您只能选择一门【#{course_name_conflict?(current_user.courses, @course)}】的课程！"}
       else 
         fails_course = []
         success_course = []

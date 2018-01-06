@@ -12,11 +12,14 @@
         <div class="panel-body" style="min-height: 450px">
           <div class="row">
             <%= form_tag("/courses/list", method: "post") do %>
-                <div class="form-group">
-                  <%= render 'courses/search_course_select_form', info: @course_time, submit_name: "course_time", name: "上课时间" %>
-                  <%= render 'courses/search_course_select_form', info: @course_exam_type, submit_name: "exam_type", name: "考试方式" %>
-                </div>
-                <button type="submit" class="btn btn-info">筛选</button>
+              <div class="form-group">
+                <%= render 'courses/search_course_select_form', info: @course_type, submit_name: "course_type", name: "课程属性" %>
+                <%= render 'courses/search_course_select_form', info: @course_time, submit_name: "course_time", name: "上课时间" %>
+                <%= render 'courses/search_course_select_form', info: @course_exam_type, submit_name: "exam_type", name: "考试方式" %>
+              </div>
+              <div class="col-sm-3">
+              <button type="submit" class="btn btn-info">筛选</button>
+              </div>
             <% end %>
           </div>
           <hr>

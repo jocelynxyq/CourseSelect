@@ -67,7 +67,7 @@ zh-CN:
       filter_date_format: "mm/dd/yy" # a combination of 'dd', 'mm' and 'yy' with any delimiter. No other interpolation will be done!
       search: "搜索"
       filter: "筛选"
-      refresh: "刷新"
+      refresh: "筛选"
       show_all: "显示全部"
       add_filter: "添加筛选条件"
       bulk_menu_title: "选中的项目"

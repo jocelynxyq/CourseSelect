@@ -16,11 +16,19 @@
               <div class="col-sm-12" style="padding-bottom: 26px">
                 <%= form_tag 'grades/import', multipart: true do %>
                     <div class="file_style">
+                      <div class="col-sm-2">
                       <input type="hidden" value="<%= @course.id %>" name="course_id">
                       <input type='text' name='textfield' id='textfield' class="fileText">
+                      </div>
+                      <div class="col-sm-3">
                       <%= file_field_tag :file, :class => "fileInput", :size => "28", :onchange => "document.getElementById('textfield').value=this.value" %>
-                      <%= submit_tag "上传", :class => "btn btn-success btn-xs" %>
-                      <%= link_to "导出", grades_export_url(:course_id => @course.id, :format => 'xls'), :class => "btn btn-success btn-xs" %>
+                      </div>
+                      <div class="col-sm-2">
+                        <%= submit_tag "导入成绩单", :class => "btn btn-primary btn-xs" %>
+                      </div>
+                      <div class="col-sm-offset-10">
+                        <%= link_to "导出成绩单", grades_export_url(:course_id => @course.id, :format => 'xls'), :class => "btn btn-success btn-xs" %>
+                      </div>
                     </div>
                 <% end %>
               </div>
@@ -98,7 +106,9 @@
               <% getgrade = getgrade + f.grade*f.course.credit.split('/').at(1).to_f %>
               <% getcredit = getcredit + f.course.credit.split('/').at(1).to_f %>
             <% end %>
-            <p><strong>已获得的学分：<font size="3" color="red"><%= getcredit.to_i %></font>&nbsp;&nbsp;学分&nbsp;&nbsp;&nbsp;&nbsp;当前加权平均成绩：<font size="3"><%= getgrade/getcredit %></font></strong></p>
+            <% if getcredit!=0.0 %>
+              <p><strong>已获得的学分：<font size="3" color="red"><%= getcredit.to_i %></font>&nbsp;&nbsp;学分&nbsp;&nbsp;&nbsp;&nbsp;当前加权平均成绩：<font size="3"><%= getgrade/getcredit %></font></strong></p>
+            <% end %>
           <% end %>
           <% if teacher_logged_in? %>
             <%= will_paginate @grades %>
