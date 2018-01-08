@@ -1,8 +1,10 @@
-本系统是基于国科大高级软件工程课程项目#[CourseSelect](https://github.com/PENGZhaoqing/CourseSelect)而开发的改进功能版，
+# Advanced CourseSelect(升级版选课系统)
+
+本系统是基于国科大高级软件工程课程项目[CourseSelect](https://github.com/PENGZhaoqing/CourseSelect)而开发的改进功能版，
 主要进行了一些界面上的优化和功能的增加完善，作为学习RoR (Ruby on Rails) 的入门级项目。
 [项目演示戳这里](https://ucascourse.herokuapp.com/)
 
-### 系统目前功能：
+### 原系统功能：
 
 * 多角色登陆（学生，老师，管理员）
 * 学生动态选课，退课
