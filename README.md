@@ -1,8 +1,9 @@
-# Courses Selecting System Based On Ruby On Rails(基于Ruby On Rails的选课系统)[![Build Status](https://travis-ci.org/jocelynxyq/CourseSelect.svg?branch=master)](https://travis-ci.org/jocelynxyq/CourseSelect)
+# 基于Ruby On Rails的选课系统[![Build Status](https://travis-ci.org/jocelynxyq/CourseSelect.svg?branch=master)](https://travis-ci.org/jocelynxyq/CourseSelect)
 
 ## 介绍
 
-本系统是基于Ruby On Rails开发的选课系统，可以实现多角色登陆系统完成选课等功能。具有良好的扩展性，可利用其基础开发更多功能的选课系统。  
+本系统是基于Ruby On Rails开发的选课系统，可以实现多角色登陆系统完成选课等功能。具有良好的扩展性，可利用其基础开发更多功能的选课系统。
+  
 项目已部署在heroku平台上 [Heroku演示地址](https://ucascourse.herokuapp.com/)  
 
 ## 安装环境
@@ -275,6 +276,85 @@ activerecord:
 ```
 
 添加完成后，重新启动项目，即可。
+
+## 添加/修改功能
+
+本项目使用MVC框架，应用主代码在app文件夹下。app/controllers中为控制器代码，app/models为数据库模型文件，app/views为视图文件。
+
+我们以向课程增加课程大纲功能为例。
+
+首先要考虑功能的添加/修改是否涉及到数据库的修改，如果是，则需要添加数据库迁移文件。
+
+该例需要向course表中加入一个新的属性outline。  
+
+于是在命令行中输入`$ rails generate migration add_outline_to_courses`
+
+然后在生成的文件`db/migrate/XXX_add_outline_to_courses`中加入以下代码：
+
+```
+class AddOutlineToCourses < ActiveRecord::Migration
+  def change
+    add_column :courses, :outline, :text, :default => "本课程暂无大纲"
+  end
+end
+```
+
+设定新的属性是文本格式，且有默认填入的内容。
+
+进行数据库的修改之后，要在controller文件夹下，加入相应的控制器代码，如app/controllers/courses_controller.rb中，加入：
+
+```
+# 增加outline方法
+def outline
+  @course = Course.find_by_id(params[:id])
+end
+```
+
+@course即是从数据库中查询到的，并可以传入view的实例对象。
+
+之后进行页面的添加，在app/views/courses/下新建outline.html.erb文件，填入内容：
+
+```
+<div class="col-sm-10">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+			<h3 class="panel-title">
+				<span>
+				  <i class="glyphicon glyphicon-th-list"></i>
+				</span>
+			课程大纲
+			</h3>
+        </div>
+        <div class="panel-body" style="min-height: 450px">
+			<h4><p><strong><%= @course.name %></strong></p></h4>
+			<p>
+         		<span><strong>课程编码：</strong><%= @course.course_code %></span>
+         		<span style="margin-left: 20px"><strong>课时/学分：</strong><%= @course.credit %></span>
+         		<span style="margin-left: 20px"><strong>课程属性：</strong><%= @course.course_type %></span>
+         	</p>
+         	<p>
+       			<div>
+       			  <strong>教学大纲</strong>
+       			</div>
+       			<%= @course.outline %>
+       		</p>   
+        </div>
+      </div>
+    </div>
+</div>
+```
+
+最后要加入相应路由，即在config/routes.rb文件中，加入以下内容：
+
+```
+resources :courses do
+    member do
+      get :outline
+    end   
+end
+```
+
+访问`HOST_PATH/courses/1/outline`即可看到添加的课程大纲界面。
 
 ## 项目部署
 
