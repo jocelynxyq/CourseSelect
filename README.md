@@ -1,4 +1,4 @@
-# Advanced CourseSelect(升级版选课系统)
+# Advanced CourseSelect(升级版选课系统)[![Build Status](https://travis-ci.org/jocelynxyq/CourseSelect.svg?branch=master)](https://travis-ci.org/jocelynxyq/CourseSelect)
 
 本系统是基于国科大高级软件工程课程项目[CourseSelect](https://github.com/PENGZhaoqing/CourseSelect)而开发的升级版，主要进行了一些功能的增加完善和界面上的优化。  
 

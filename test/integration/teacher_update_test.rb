@@ -54,28 +54,4 @@ class TeacherUpdateTest < ActionDispatch::IntegrationTest
     assert_equal @current_user.department, @new_department
   end
 
-  test "teacher update info with wrong password" do
-    get edit_user_path(@current_user)
-    assert_template 'users/edit'
-
-    @new_name = "teacher_new"
-    @new_email ="teacher_test_new@test.com"
-    @new_department = "计算机学院"
-    @wrong_password = "password_wrong"
-
-
-    patch user_path(@current_user), user:{ 
-      name:@new_name,
-      email:@new_email,
-      department:@new_department,
-      password:@wrong_password
-    }
-    
-    @current_user = User.find_by(id: session[:user_id])
-    assert_equal flash[:warning], "更新失败"
-
-    assert_equal @current_user.name, @origin_name
-    assert_equal @current_user.email, @origin_email
-    assert_equal @current_user.department, @origin_department
-  end
 end

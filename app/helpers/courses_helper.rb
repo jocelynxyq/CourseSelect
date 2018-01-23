@@ -52,7 +52,7 @@ module CoursesHelper
     course_time = Array.new(11) {Array.new(7) {Array.new(3, '')}}
     courses.each do |cour|
       cour_time = String(cour.course_time)
-      end_j = cour_time.index('(')#index第一次出现的字节位置 end_j=2
+      end_j = cour_time.index('(')#index第一次出现的字节位置
       j = week_data_to_num(cour_time[0...end_j])
       t = cour_time[end_j + 1...cour_time.index(')')].split("-")
       for i in (t[0].to_i..t[1].to_i).each
